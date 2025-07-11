@@ -6,7 +6,8 @@ from django.conf import settings
 class FuelService:
     @staticmethod
     def load_fuel_data():
-        df = pd.read_csv("C:\\Users\\youss.YOUSSEF\\OneDrive\\Desktop\\Youssef\\Education\\Github\\spotterapi\\spotterapi\\static\\data\\fuel-prices-for-be-assessment-clean.csv")
+
+        df = pd.read_csv(settings.CSV_FILE)
         df = df.dropna(subset=["Latitude", "Longitude", "Retail Price"])
         return df[["Truckstop Name", "Retail Price", "Latitude", "Longitude"]]
 

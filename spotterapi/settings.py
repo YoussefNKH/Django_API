@@ -25,6 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-a*)9*rkwd(^$i6_q%c3t2-6v#pn)*$jsgchtdgez(4u9!ttg1^'
 TOMTOM_API_KEY= config('TOMTOM_API_KEY', default='', cast=str)
+CSV_FILE=config('CSV_FILE',default='', cast=str)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
