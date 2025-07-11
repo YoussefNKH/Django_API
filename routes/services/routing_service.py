@@ -42,3 +42,23 @@ class RoutingService:
         gallons = distance / mpg
         avg_price = sum([stop["price"] for stop in stops]) / len(stops) if stops else 0
         return round(gallons * avg_price, 2)
+    @staticmethod
+    def is_in_usa(lat, lon):
+        """Check if coordinates are within USA bounding box"""
+        min_lat, max_lat = 24.396308, 49.384358
+        min_lon, max_lon = -125.000000, -66.934570
+        return (min_lat <= lat <= max_lat) and (min_lon <= lon <= max_lon)
+
+    @staticmethod
+    def validate_us_coordinates(start, end):
+        """Validate both start and end are in USA"""
+        try:
+            start_lat, start_lon = map(float, start.split(','))
+            end_lat, end_lon = map(float, end.split(','))
+            
+            if not (RoutingService.is_in_usa(start_lat, start_lon) and 
+                    RoutingService.is_in_usa(end_lat, end_lon)):
+                raise ValueError("Your start and end points aren't in USA")
+            return True
+        except ValueError as e:
+            raise ValueError("Invalid coordinate format or location outside USA")

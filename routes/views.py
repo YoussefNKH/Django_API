@@ -23,6 +23,7 @@ class RouteCalculatorView(APIView):
         mpg = 10
 
         try:
+            RoutingService.validate_us_coordinates(start, end)
             
             route, distance = RoutingService.get_route(start, end)
             
