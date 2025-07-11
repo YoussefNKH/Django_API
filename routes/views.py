@@ -1,4 +1,6 @@
 #spotterapi/routes/views.py
+import base64
+import tempfile
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -35,12 +37,16 @@ class RouteCalculatorView(APIView):
             
             
             total_cost = RoutingService.compute_total_cost(distance, stops, mpg)
+
+
             
-            # Prepare response
+            
             response_data = {
                 "total_distance": round(distance, 2),
                 "total_cost": total_cost,
-                "fuel_stops": stops
+                "fuel_stops": stops,
+              
+             
             }
             
             response_serializer = RouteResponseSerializer(data=response_data)

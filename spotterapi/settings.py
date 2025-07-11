@@ -11,8 +11,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-from dotenv import load_dotenv
+from decouple import config
 import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-a*)9*rkwd(^$i6_q%c3t2-6v#pn)*$jsgchtdgez(4u9!ttg1^'
-TOMTOM_API_KEY= os.getenv('TOMTOM_API_KEY')
+TOMTOM_API_KEY= config('TOMTOM_API_KEY', default='', cast=str)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

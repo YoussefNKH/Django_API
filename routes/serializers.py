@@ -16,4 +16,4 @@ class RouteResponseSerializer(serializers.Serializer):
     total_distance = serializers.FloatField()
     total_cost = serializers.FloatField()
     fuel_stops = FuelStopSerializer(many=True)
-    map_html = serializers.CharField()
+    

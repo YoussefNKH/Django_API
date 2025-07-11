@@ -9,7 +9,7 @@ class RoutingService:
     def get_route(start, end):
         url = f"https://api.tomtom.com/routing/1/calculateRoute/{start}:{end}/json"
         params = {
-            "key": "wFfa48kRsHOvauM5HVACKcIwKrgKcSrQ",
+            "key": settings.TOMTOM_API_KEY,
             "routeType": "fastest",
             "travelMode": "car",
             "traffic": "false",
